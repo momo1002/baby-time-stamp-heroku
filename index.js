@@ -20,7 +20,7 @@ app.post("/bot/webhook", function(req, res) {
   let msg = userMessage;
 
   msg = getTime();
-  msg = msg[time];
+  msg = msg[Year];
   if (event.type === "message") {
     const dataString = JSON.stringify({
       replyToken: event.replyToken,
