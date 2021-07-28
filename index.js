@@ -30,6 +30,7 @@ app.post("/bot/webhook", function(req, res) {
   let time =  Hour + ":" + Min;
   time = "・" + time.toString();
 
+    msg = tellMsg('ちゃっす');
   if (event.type === "message") {
     const dataString = JSON.stringify({
       replyToken: event.replyToken,
@@ -74,3 +75,7 @@ app.post("/bot/webhook", function(req, res) {
 app.listen(PORT, () => {
   console.log(`Example app listening at http://localhost:${PORT}`)
 })
+
+function tellMsg(msg){
+    return msg;
+}
