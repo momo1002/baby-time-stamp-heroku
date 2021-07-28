@@ -89,4 +89,5 @@ function getTime(){
             return time = time.toString();
         }
     };
+    return currentDate;
 }
