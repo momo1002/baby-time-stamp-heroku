@@ -16,18 +16,15 @@ app.get("/", (req, res) => {
 app.post("/bot/webhook", function(req, res) {
   res.send("HTTP POST request sent to the webhook URL!")
   const event = req.body.events[0];
+  let msg = "やっほー";
   if (event.type === "message") {
     const dataString = JSON.stringify({
       replyToken: event.replyToken,
       messages: [
         {
           "type": "text",
-          "text": "Hello, user"
+          "text": msg
         },
-        {
-          "type": "text",
-          "text": "May I help you?"
-        }
       ]
     })
 
