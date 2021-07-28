@@ -47,6 +47,33 @@ server.post('/bot/webhook', line.middleware(line_config), (req, res, next) => {
                     text: "うざ"
                 }));
             }
+
+            const msgOppai = [
+                {
+                  'type':'text',
+                  'text': '「おちまい」タップで時間をキロクできるよ',
+                  "quickReply": {
+                    "items": [
+                      {
+                        "type": "action",
+                        "action": {
+                          "type": "message",
+                          "label": "🕐おっぱいタイムおちまい",
+                          "text": "おっぱいタイムおちまい"
+                        }
+                      }
+                    ]
+                  }
+                }];
+            let msg;
+            if (event.message.text == "おっぱい"){
+                msg = msgOppai;
+                // replyMessage()で返信し、そのプロミスをevents_processedに追加。
+                events_processed.push(bot.replyMessage(event.replyToken, {
+                    type: "text",
+                    text: msg
+                }));
+            }
         }
     });
 
