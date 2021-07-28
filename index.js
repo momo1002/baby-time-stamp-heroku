@@ -19,18 +19,7 @@ app.post("/bot/webhook", function(req, res) {
   const userMessage = event.message.text;
   let msg = userMessage;
 
-  const date = new Date(Math.floor(new Date().getTime()/1000/60/5)*1000*60*5);
-  const Year = date.getFullYear();
-  const Month = date.getMonth()+1;
-  const Day = date.getDate();
-  const Hour = date.getHours().toString().padStart(2, '0');
-  const Min = date.getMinutes().toString().padStart(2, '0');
-
-  const now = Year + "年" + Month + "月" + Day + "日";
-  let time =  Hour + ":" + Min;
-  time = "・" + time.toString();
-
-    msg = tellMsg('ちゃっす');
+  msg = getTime;
   if (event.type === "message") {
     const dataString = JSON.stringify({
       replyToken: event.replyToken,
@@ -76,6 +65,15 @@ app.listen(PORT, () => {
   console.log(`Example app listening at http://localhost:${PORT}`)
 })
 
-function tellMsg(msg){
-    return msg;
+function getTime(){
+    const date = new Date(Math.floor(new Date().getTime()/1000/60/5)*1000*60*5);
+    const Year = date.getFullYear();
+    const Month = date.getMonth()+1;
+    const Day = date.getDate();
+    const Hour = date.getHours().toString().padStart(2, '0');
+    const Min = date.getMinutes().toString().padStart(2, '0');
+  
+    const now = Year + "年" + Month + "月" + Day + "日";
+    let time =  Hour + ":" + Min;
+    return time = time.toString();
 }
