@@ -36,8 +36,8 @@ app.post("/bot/webhook", function(req, res) {
       messages: [
         {
           "type": "text",
-          "text": now
-        },
+          "text": msg
+        }
       ]
     })
 
