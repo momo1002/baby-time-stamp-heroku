@@ -20,6 +20,7 @@ app.post("/bot/webhook", function(req, res) {
   let msg = userMessage;
 
   msg = getTime();
+  msg = msg[time];
   if (event.type === "message") {
     const dataString = JSON.stringify({
       replyToken: event.replyToken,
@@ -67,13 +68,25 @@ app.listen(PORT, () => {
 
 function getTime(){
     const date = new Date(Math.floor(new Date().getTime()/1000/60/5)*1000*60*5);
-    const Year = date.getFullYear();
-    const Month = date.getMonth()+1;
-    const Day = date.getDate();
-    const Hour = date.getHours().toString().padStart(2, '0');
-    const Min = date.getMinutes().toString().padStart(2, '0');
-  
-    const now = Year + "年" + Month + "月" + Day + "日";
-    let time =  Hour + ":" + Min;
-    return time = time.toString();
+    // const Year = date.getFullYear();
+    // const Month = date.getMonth()+1;
+    // const Day = date.getDate();
+    // const Hour = date.getHours().toString().padStart(2, '0');
+    // const Min = date.getMinutes().toString().padStart(2, '0');
+
+    var currentDate = {
+        Year : date.getFullYear(),
+        Month : date.getMonth()+1,
+        Day : date.getDate(),
+        Hour : date.getHours().toString().padStart(2, '0'),
+        Min : date.getMinutes().toString().padStart(2, '0'),
+        displayToday: function(){
+            const now = Year + "年" + Month + "月" + Day + "日";
+            return now;
+        },
+        displayTime: function(){
+            let time =  Hour + ":" + Min;
+            return time = time.toString();
+        }
+    };
 }
