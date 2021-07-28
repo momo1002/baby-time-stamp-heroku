@@ -20,7 +20,7 @@ app.post("/bot/webhook", function(req, res) {
   let msg = userMessage;
 
   msg = getTime();
-  msg = msg[Year];
+  msg = msg.Year;
   if (event.type === "message") {
     const dataString = JSON.stringify({
       replyToken: event.replyToken,
@@ -74,20 +74,11 @@ function getTime(){
     // const Hour = date.getHours().toString().padStart(2, '0');
     // const Min = date.getMinutes().toString().padStart(2, '0');
 
-    var currentDate = {
-        Year : date.getFullYear(),
-        Month : date.getMonth()+1,
-        Day : date.getDate(),
-        Hour : date.getHours().toString().padStart(2, '0'),
-        Min : date.getMinutes().toString().padStart(2, '0'),
-        displayToday: function(){
-            const now = Year + "年" + Month + "月" + Day + "日";
-            return now;
-        },
-        displayTime: function(){
-            let time =  Hour + ":" + Min;
-            return time = time.toString();
-        }
-    };
-    return currentDate;
+    date.Year = date.getFullYear();
+    date.Month = date.getMonth()+1;
+    date.Day = date.getDate();
+    date.Hour = date.getHours().toString().padStart(2, '0');
+    date.Min = date.getMinutes().toString().padStart(2, '0');
+
+    return date;
 }
