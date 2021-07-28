@@ -80,8 +80,8 @@ function getTime(){
     date.Hour = date.getHours().toString().padStart(2, '0');
     date.Min = date.getMinutes().toString().padStart(2, '0');
 
-    date.Today = Year + "年" + Month + "月" + Day + "日";
-    date.Time =  Hour + ":" + Min;
+    date.Today = date.Year + "年" + date.Month + "月" + date.Day + "日";
+    date.Time =  date.Hour + ":" + date.Min;
 
     return date;
 }
