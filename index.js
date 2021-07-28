@@ -20,7 +20,7 @@ app.post("/bot/webhook", function(req, res) {
   let msg = userMessage;
 
   msg = getTime();
-  msg = msg.Year;
+  msg = msg.Today;
   if (event.type === "message") {
     const dataString = JSON.stringify({
       replyToken: event.replyToken,
@@ -79,6 +79,9 @@ function getTime(){
     date.Day = date.getDate();
     date.Hour = date.getHours().toString().padStart(2, '0');
     date.Min = date.getMinutes().toString().padStart(2, '0');
+
+    date.Today = Year + "年" + Month + "月" + Day + "日";
+    date.Time =  Hour + ":" + Min;
 
     return date;
 }
